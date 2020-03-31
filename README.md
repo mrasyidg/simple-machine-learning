@@ -1,2 +1,5 @@
-# simple-machine-learning-algorithms
-Just a personal repository of simple ml and experiments. No warranty.
+# simple-machine-learning-codes
+Just a personal repository to store the implementation of simple ml algorithms and experiments. 
+No warranty.
+
+_~ Rasyid_
