@@ -2,4 +2,4 @@
 Just a personal repository to store the implementation of simple ml algorithms and experiments. 
 No warranty.
 
-_~ Rasyid_
+*~ Rasyid*
