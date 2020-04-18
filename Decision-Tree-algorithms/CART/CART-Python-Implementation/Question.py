@@ -1,5 +1,3 @@
-from DecisionTreeClassifier import DecisionTreeClassifier
-
 class Question:
     
     
@@ -36,7 +34,7 @@ class Question:
         header = ['age', 'sex', 'total_bilirubin', 'direct_bilirubin', 'alkaline', 'alamine', 'aspartate', 'total_protein', 'albumin', 'A/G Ratio', 'label']
         # This is just a helper method to print the question in a readable format.
         condition = "=="
-        if DecisionTreeClassifier.is_numeric(self.value):
+        if Question.is_numeric(self.value):
             condition = ">="
         return "Is %s %s %s?" % (
             header[self.column], condition, str(self.value))
