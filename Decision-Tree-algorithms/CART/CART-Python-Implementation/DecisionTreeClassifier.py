@@ -1,7 +1,7 @@
 from Leaf import Leaf
 from Question import Question
 from DecisionNode import Decision_Node
-
+from CounterTool import CounterTool
 
 class DecisionTreeClassifier:
     
@@ -19,23 +19,6 @@ class DecisionTreeClassifier:
     def unique_label(rows):
         # Used to find the unique values for classification_label, note that there is only one column for label. # Rasyid
         return set([row for row in rows])
-    
-    @staticmethod
-    def class_counts(rows):
-        # Used for dataset array. Returns a dictionary of label -> count.
-        counts = {}
-        for row in rows:
-            # in our dataset format, the label is always the last column
-            label = row[-1]
-            if label not in counts:
-                counts[label] = 0
-            counts[label] += 1
-        return counts
-    
-    @staticmethod
-    def is_numeric(value):
-        # To test if a value is numeric.
-        return isinstance(value, int) or isinstance(value, float)
         
     @staticmethod    
     def partition(rows, question):
@@ -51,7 +34,7 @@ class DecisionTreeClassifier:
     @staticmethod   
     def gini(rows):
         # Used to count the impurity.
-        counts = DecisionTreeClassifier.class_counts(rows)
+        counts = CounterTool.class_counts(rows)
         impurity = 1
         for lbl in counts:
             prob_of_lbl = counts[lbl] / float(len(rows))
