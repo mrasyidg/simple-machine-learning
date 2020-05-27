@@ -4,8 +4,8 @@ class Optimizer:
         self.loss_func = loss_func
     
     
-    # def update_layer(self, layer, weight, bias):
-        
+    def update_layer(self, layer, weight, bias):
+        raise NotImplementedError
 
     # forward propagation   
     def _forward(self, _input):
