@@ -1,4 +1,5 @@
 import numpy as np
+from Layer import Layer
 
 
 class Dense(Layer):
@@ -18,7 +19,6 @@ class Dense(Layer):
     
     def forward(self, _input):
         return np.dot(_input, self.weights) + self.bias
-        raise NotImplementedError()
         
     def backward(self, _input, grad_output):
         grad_input = np.dot(grad_output, np.transpose(self.weights))

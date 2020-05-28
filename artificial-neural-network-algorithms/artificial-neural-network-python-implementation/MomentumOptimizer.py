@@ -1,3 +1,6 @@
+from Optimizer import Optimizer
+
+
 class MomentumOptimizer(Optimizer):
     def __init__(self, model, loss_func, learning_rate=1e-4, beta=0.9): # with learning rate 0.0001
         super().__init__(model, loss_func)
