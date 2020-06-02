@@ -1,3 +1,7 @@
+import numpy as np
+import math
+
+
 class Silhouette:
   def __init__(self, X, labels):
     self.X = X
@@ -50,10 +54,9 @@ class Silhouette:
 
   def score(self):
       s_arr = []
-      for i in range(len(X)):
+      for i in range(len(self.X)):
           a = None
           b = float('inf')
-          b_arr = []
 
           a = self.calculate_a(self.X[i], self.labels[i])
           b = self.calculate_b(self.X[i], self.labels[i])
