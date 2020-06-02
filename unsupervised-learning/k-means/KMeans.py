@@ -1,4 +1,5 @@
 import numpy as np
+from math import sqrt
 
 
 class Kmeans:
@@ -20,9 +21,9 @@ class Kmeans:
         inside = 0
         for i in range(n):
             inside += ((x1[i]-x2[i])**2)
-        distance = math.sqrt(inside)
+        distance = sqrt(inside)
         return distance
-
+    
     def compute_distance_matrix(self, X, rep):
         r = len(X)
         c = len(rep)
@@ -40,7 +41,8 @@ class Kmeans:
         return res.astype(int)
 
     def update_centroids(self, X, labels, old_centroids):
-        new_centroid = np.zeros(old_centroids.shape)
+        new_centroid = np.zeros(self.centroids.shape)
+
         c_count = len(self.centroids)
         X_count = len(X)
         colony = []
@@ -48,12 +50,15 @@ class Kmeans:
             for j in range(X_count):
                 if labels[j] == i:
                     colony.append(X[j])
+
             colony = np.array(colony)
             colony = np.transpose(colony)
+            
             colony_r = colony.shape[0]
             for k in range(colony_r):
                 new_centroid[i][k] = np.mean(colony[k])
             colony = []
+            
         return np.round(new_centroid, 3)
 
     def fit(self, X):
@@ -66,7 +71,7 @@ class Kmeans:
             self.labels = self.assign_label(dist_mtx)
             temp_centroids = self.centroids
             self.centroids = self.update_centroids(X, self.labels, old_centroids)
-            old_centroids = temp_centroids  
+            old_centroids = temp_centroids
         return self
 
     def predict(self, X):
