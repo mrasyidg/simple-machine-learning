@@ -77,11 +77,15 @@ class Kmedoids:
     def fit(self, X):
         self.initial_medoids = self.initialize_medoids(X)
 
-        dist_mtx = self.compute_distance_matrix(X, self.initial_medoids)
-        cost = self.calculate_cost(dist_mtx)
-        self.best_medoids, self.lowest_cost = self.update_medoids(X, cost)
+        iterator = 3
+        
+        while(iterator>0):
+            dist_mtx = self.compute_distance_matrix(X, self.initial_medoids)
+            cost = self.calculate_cost(dist_mtx)
+            self.best_medoids, self.lowest_cost = self.update_medoids(X, cost)
+            self.labels = assign_label(self.compute_distance_matrix(X, self.best_medoids))
+            iterator-=1
 
-        self.labels = assign_label(self.compute_distance_matrix(X, self.best_medoids))
         return self
 
     def predict(self, X):
